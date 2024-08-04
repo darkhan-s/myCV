@@ -1,0 +1,135 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{geometry}
+\geometry{left=1in, right=1in, top=0.7in, bottom=1in}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{fontawesome5}
+\usepackage{parskip}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{helvet}
+\usepackage{lmodern}
+\usepackage{array}
+
+\renewcommand{\familydefault}{\sfdefault} % Set the default font family to sans-serif (Helvetica)
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+
+\definecolor{darkblue}{RGB}{0, 0, 139}
+\definecolor{lightgray}{gray}{0.8}
+
+\titleformat{\section}
+  {\color{darkblue}\large\bfseries}
+  {}
+  {0em}
+  {}
+\titlespacing{\section}{0pt}{*0.8}{*0.3}
+
+\titleformat{\subsection}
+  {\color{darkblue}\normalsize\bfseries}
+  {}
+  {0em}
+  {}
+\titlespacing{\subsection}{0pt}{*0.6}{*0.2}
+
+\titleformat{\subsubsection}
+  {\color{darkblue}\normalsize\itshape}
+  {}
+  {0em}
+  {}
+\titlespacing{\subsubsection}{0pt}{*0.4}{*0.2}
+
+\renewcommand{\labelitemi}{$\bullet$}
+\setlist[itemize]{left=0pt}
+
+\begin{document}
+\setstretch{1.1}
+
+\begin{center}
+    {\color{darkblue}\textbf{\LARGE Saidnassimov Darkhan}} \\
+    \vspace{0.3cm}
+    \begin{tabular}{@{}c@{}}
+        \faPhone\ (+358) 046 550 32 34 \textcolor{lightgray}{\textbar} \faEnvelope\ \href{mailto:darkhan.saidnassimov@gmail.com}{darkhan.saidnassimov@gmail.com} \\
+        \faGithub\ \href{https://github.com/darkhan-s}{darkhan-s} \textcolor{lightgray}{\textbar} \faLinkedin\ \href{https://www.linkedin.com/in/dsaidnassimov/}{dsaidnassimov} \textcolor{lightgray}{\textbar} \faMapMarker\ 00370 Helsinki, Finland
+    \end{tabular}
+\end{center}
+
+\vspace{0.2cm}
+\hrule
+\vspace{0.3cm}
+
+\section*{Summary}
+Self-driven engineer with professional experience in developing and delivering software-based solutions. Interested in automation and digitization of day-to-day applications using state-of-the-art machine learning methodologies.
+
+\vspace{0.2cm}
+\hrule
+\vspace{0.3cm}
+
+\section*{Work Experience}
+\subsection*{Software Design Engineer, ABB, Helsinki, Finland \hfill \textcolor{black}{Nov 2022 - present}}
+\begin{itemize}
+    \item Designing the architecture of the Energy Management solution back-end.
+    \item Developed anomaly detection and forecasting application plugins for the Energy Management software and maintained its core functionality.
+    \item Development included C\# to operate with the RTDB (time-series database), REST API to connect to the python-based API, and bash scripting.
+\end{itemize}
+
+\subsection*{Thesis Worker, Metso:Outotec, Espoo, Finland \hfill \textcolor{black}{Jan 2022 - Aug 2022}}
+\begin{itemize}
+    \item Developed an algorithm to recognize real-life equipment items using rendered images of the corresponding 3D models, achieving mAP of 69.57\% using a custom industrial dataset.
+    \item Research areas: deep learning, cross-domain object detection, transfer learning, continual learning.
+\end{itemize}
+
+\subsection*{Software Developer, Redrakon, Espoo, Finland \hfill \textcolor{black}{Oct 2021 - Jan 2022}}
+\begin{itemize}
+    \item Maintained a computer vision application in a startup environment.
+    \item Deployed an OpenVINO model on a RaspberryPi to collect GDPR-compliant data on audience demographics using Python.
+    \item The company went out of business in early January 2022.
+\end{itemize}
+
+\subsection*{Jr. Software Engineer, Raute Oyj, Lahti, Finland \hfill \textcolor{black}{July 2018 - July 2021}}
+\begin{itemize}
+    \item Standardized the industrial data collection system through a thesis project.
+    \item Installed data collection systems in 10+ plywood mills and completed multiple installation visits to customer plants to fix PLC code.
+    \item Completed XY-charger start-ups and Gocator laser calibrations in a team of 3.
+    \item Developed and maintained a C\# user interface for a sheet feeder, later used in 2+ customer mills.
+\end{itemize}
+
+\vspace{0.2cm}
+\hrule
+\vspace{0.3cm}
+
+\section*{Education}
+\subsection*{Aalto University, Espoo, Finland \hfill \textcolor{black}{Sep 2020 - July 2022}}
+\begin{itemize}
+    \item M.Sc. in Automation and Electrical Engineering
+    \item Major in Control, Robotics and Autonomous Systems
+    \item Thesis topic: Equipment identification through image recognition for Metso:Outotec (2022)
+\end{itemize}
+
+\subsection*{HAMK University of Applied Sciences, Valkeakoski, Finland \hfill \textcolor{black}{Sep 2015 - Feb 2019}}
+\begin{itemize}
+    \item B.Eng. in Electrical and Automation Engineering
+    \item Exchange studies at the University of Dundee, Scotland, UK (2018)
+    \item Thesis topic: Standardization of MillSIGHTS data collection and reporting system for Raute Oyj (2019)
+    \item Assisted 15+ first-year international and exchange students as a Peer Tutor
+    \item Promoted Finnish education and Finland at Expo 2017 in Astana, Kazakhstan
+    \item Led the official Instagram account of the university
+\end{itemize}
+
+\vspace{0.2cm}
+\hrule
+\vspace{0.3cm}
+
+\section*{Skills}
+\begin{itemize}
+    \item \textbf{Programming Languages:} Python, C\#.NET, SQL, Matlab
+    \item \textbf{Technologies:} Git, Linux, Azure, Nginx, Step7, TIA, ROS, HTML, CSS, PyTorch, scikit-learn, OpenCV, Detectron2, YOLO, Flask, Rest API, Docker, RaspberryPi, Intel NCS2, OpenVINO, Arduino, Latex, MS Office, time-series databases, bash scripting
+    \item \textbf{Languages:} Kazakh (native), Russian (native), English (fluent, IELTS 7.0), Finnish (B1, YKI-certified)
+    \item \textbf{Other certifications:} Valid Finnish occupational safety card, Driving license (B)
+\end{itemize}
+
+\end{document}
