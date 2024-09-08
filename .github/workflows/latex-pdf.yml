@@ -9,14 +9,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    container:
+      image: danteev/texlive  # A Docker image with LaTeX pre-installed
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install LaTeX
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y texlive-full
 
       - name: Compile LaTeX to PDF using xelatex
         run: |
@@ -52,3 +51,6 @@ jobs:
           git add SaidnassimovDarkhanCV.pdf
           git commit -m "Update compiled CV PDF"
           git push --force origin pdf-output
+
+        env:
+          GITHUB_TOKEN: ${{secrets.DEPLOYMENT_KEY}}
