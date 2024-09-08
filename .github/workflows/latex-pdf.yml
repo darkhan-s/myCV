@@ -1,0 +1,54 @@
+name: Build LaTeX and Deploy PDF to pdf-output
+
+on:
+  push:
+    branches:
+      - main  # Only trigger on the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-full
+
+      - name: Compile LaTeX to PDF using xelatex
+        run: |
+          latexmk -pdf -xelatex -interaction=nonstopmode SaidnassimovDarkhanCV.tex
+
+      - name: Upload compiled PDF as an artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: compiled-cv
+          path: SaidnassimovDarkhanCV.pdf
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Download compiled PDF artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: compiled-cv
+          path: ./  # Downloads the PDF to the repository
+
+      - name: Setup output branch
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git fetch
+          git checkout -B pdf-output
+          git add SaidnassimovDarkhanCV.pdf
+          git commit -m "Update compiled CV PDF"
+          git push --force origin pdf-output
