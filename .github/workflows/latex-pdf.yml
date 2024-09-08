@@ -47,10 +47,18 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git remote set-url origin https://x-access-token:${{ secrets.DEPLOYMENT_KEY }}@github.com/darkhan-s/myCV.git
-          git checkout -B pdf-output
-          git add SaidnassimovDarkhanCV.pdf
-          git commit -m "Update compiled CV PDF"
+          git checkout -B pdf-output origin/pdf-output || git checkout --orphan pdf-output
+          
+          # Remove all files except README.md
+          find . -not -name 'README.md' -not -name '.git' -exec rm -rf {} +
+          
+          # Add README.md and the PDF
+          git add README.md SaidnassimovDarkhanCV.pdf
+          git commit -m "Deploy compiled CV PDF and keep README.md"
+          
+          # Force push to pdf-output branch
           git push --force origin pdf-output
+
 
         env:
           GITHUB_TOKEN: ${{secrets.DEPLOYMENT_KEY}}
