@@ -3,7 +3,10 @@ name: Build LaTeX and Deploy PDF to pdf-output
 on:
   push:
     branches:
-      - main  # Only trigger on the main branch
+      - main
+      - '*'
+    paths-ignore:
+      - 'pdf-output/**'  # Ignore changes in the pdf-output branch to prevent recursive triggers
 
 jobs:
   build:
@@ -16,21 +19,29 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Set TEX file based on branch
+        id: set-tex-file
+        run: |
+          # Assuming .tex files are named after branch names
+          BRANCH_NAME=${GITHUB_REF##*/}
+          TEX_FILE="${BRANCH_NAME}.tex"
+          echo "::set-output name=tex_file::$TEX_FILE"
 
       - name: Compile LaTeX to PDF using xelatex
         run: |
-          latexmk -pdf -xelatex -interaction=nonstopmode SaidnassimovDarkhanCV.tex
+          TEX_FILE="${{ steps.set-tex-file.outputs.tex_file }}"
+          latexmk -pdf -xelatex -interaction=nonstopmode $TEX_FILE
 
       - name: Upload compiled PDF as an artifact
         uses: actions/upload-artifact@v3
         with:
           name: compiled-cv
-          path: SaidnassimovDarkhanCV.pdf
+          path: "*.pdf"  # Upload the generated PDF
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: github.ref != 'refs/heads/pdf-output'  # Ensure deploy is not triggered by the pdf-output branch
 
     steps:
       - name: Checkout repository
@@ -55,12 +66,12 @@ jobs:
           # Check out the pdf-output branch (create if not exists)
           git checkout -B pdf-output
 
-          # Copy all files from main to pdf-output
-          git checkout main -- .
+          # Copy the generated PDF file to pdf-output branch
+          git checkout main -- "*.pdf"
           
-          # Add all files including the new PDF
+          # Add the PDF file
           git add .
-          git commit -m "Update with latest build"
+          git commit -m "Update with latest build from ${{ github.ref }}"
 
           # Push changes to pdf-output branch
           git push --force origin pdf-output
