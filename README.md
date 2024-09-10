@@ -1,41 +1,42 @@
+
 # myCV
 [![Build LaTeX and Deploy PDF to pdf-output](https://github.com/darkhan-s/myCV/actions/workflows/latex-pdf.yml/badge.svg?branch=main)](https://github.com/darkhan-s/myCV/actions/workflows/latex-pdf.yml)
 
 # CV LaTeX Build & Deployment
 
-This repository contains my CV written in LaTeX, which is automatically built and deployed to a separate branch using GitHub Actions.
+This repository contains my CVs written in LaTeX, which are automatically built and deployed to a separate branch using GitHub Actions.
 
 ## Workflow
 
-The GitHub Actions workflow is triggered every time changes are pushed to the `main` branch. The workflow performs the following steps:
+The GitHub Actions workflow is triggered every time changes are pushed to any branch except `pdf-output`. The workflow performs the following steps:
 
-1. **Install LaTeX**: Installs the required LaTeX packages to compile the `.tex` file.
-2. **Compile LaTeX**: Compiles the LaTeX file (`.tex`) into a PDF using `xelatex`.
-3. **Copy to `pdf-output` Branch**: After the build, all files from the `main` branch, including the compiled PDF, are copied to the `pdf-output` branch.
+1. **Install LaTeX**: Uses a Docker container with LaTeX pre-installed to compile the `.tex` file specific to the branch.
+2. **Compile LaTeX**: Dynamically selects the `.tex` file based on the branch name and compiles it into a PDF using `xelatex`.
+3. **Copy to `pdf-output` Branch**: After the build, the compiled PDF is copied to the `pdf-output` branch, ensuring all branches contribute their PDF to this branch without triggering another workflow.
 
 ## Output
 
-The final PDF, `SaidnassimovDarkhanCV.pdf`, is located in the root of the `pdf-output` branch. You can access the latest version of the CV by checking the `pdf-output` branch.
+The final PDF is located in the root of the `pdf-output` branch. You can access the latest version of the CVs by checking the `pdf-output` branch.
 
 ## How It Works
 
-1. Push changes to the `main` branch.
-2. GitHub Actions will automatically build the PDF from the LaTeX source.
-3. All files, including the PDF, will be copied to the `pdf-output` branch.
-4. The latest PDF can be accessed from the `pdf-output` branch.
+1. Push changes to any branch (other than `pdf-output`).
+2. GitHub Actions will automatically build the PDF corresponding to the LaTeX file in that branch.
+3. The compiled PDF will be copied to the `pdf-output` branch.
+4. The latest PDF for any branch can be accessed from the `pdf-output` branch.
 
 ## Branches
 
-- **`main`**: Contains the LaTeX source files and any other relevant files for the CV.
-- **`pdf-output`**: Contains all the files from `main` and the compiled PDF (`SaidnassimovDarkhanCV.pdf`).
+- **`main`**: Contains the primary LaTeX source files for the CV.
+- **Other branches**: Each branch can have its own LaTeX file, and the corresponding PDF will be generated and pushed to the `pdf-output` branch.
+- **`pdf-output`**: Contains the compiled PDF files from all branches.
 
-## Access the Latest PDF
+## Access the Latest PDFs
 
-To view or download the latest version of the compiled CV, go to the `pdf-output` branch or use the following link:
+To view or download the latest version of any compiled CV, go to the `pdf-output` branch or use the following link:
 https://darkhan-s.github.io/myCV/SaidnassimovDarkhanCV.pdf
-
 
 ## Notes
 
-In Visual Studio code and in Overleaf, build using Recipe:latexmk (xelatex).
-
+- In Visual Studio Code or Overleaf, use the build recipe: `latexmk` with `xelatex`.
+- Each branch should have a corresponding `.tex` file named after the branch.
