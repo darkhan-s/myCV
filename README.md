@@ -1,4 +1,3 @@
-
 # myCV
 [![Build LaTeX and Deploy PDF to pdf-output](https://github.com/darkhan-s/myCV/actions/workflows/latex-pdf.yml/badge.svg?branch=main)](https://github.com/darkhan-s/myCV/actions/workflows/latex-pdf.yml)
 
@@ -12,7 +11,7 @@ The GitHub Actions workflow is triggered every time changes are pushed to any br
 
 1. **Install LaTeX**: Uses a Docker container with LaTeX pre-installed to compile the `.tex` file specific to the branch.
 2. **Compile LaTeX**: Dynamically selects the `.tex` file based on the branch name and compiles it into a PDF using `xelatex`.
-3. **Copy to `pdf-output` Branch**: After the build, the compiled PDF is copied to the `pdf-output` branch, ensuring all branches contribute their PDF to this branch without triggering another workflow.
+3. **Deploy to `pdf-output` Branch**: After the build, the compiled PDF is automatically pushed to the `pdf-output` branch, ensuring all branches contribute their PDF without triggering another workflow.
 
 ## Output
 
@@ -22,7 +21,7 @@ The final PDF is located in the root of the `pdf-output` branch. You can access 
 
 1. Push changes to any branch (other than `pdf-output`).
 2. GitHub Actions will automatically build the PDF corresponding to the LaTeX file in that branch.
-3. The compiled PDF will be copied to the `pdf-output` branch.
+3. The compiled PDF will be pushed to the `pdf-output` branch with a file name corresponding to the branch name.
 4. The latest PDF for any branch can be accessed from the `pdf-output` branch.
 
 ## Branches
@@ -34,7 +33,8 @@ The final PDF is located in the root of the `pdf-output` branch. You can access 
 ## Access the Latest PDFs
 
 To view or download the latest version of any compiled CV, go to the `pdf-output` branch or use the following link:
-https://darkhan-s.github.io/myCV/SaidnassimovDarkhanCV.pdf
+- [Darkhan Saidnassimov's CV (main branch)](https://darkhan-s.github.io/myCV/SaidnassimovDarkhanCV.pdf)
+- Replace `main` in the URL to access PDFs from other branches, e.g., `https://darkhan-s.github.io/myCV/<branch-name>.pdf`
 
 ## Notes
 
