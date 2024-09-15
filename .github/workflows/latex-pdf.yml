@@ -60,12 +60,14 @@ jobs:
           
           # Set the correct remote URL using the PAT
           git remote set-url origin https://x-access-token:${{ secrets.DEPLOYMENT_KEY }}@github.com/darkhan-s/myCV.git
-          
+
+          git fetch --all
+
           # Check out the pdf-output branch (create if not exists)
           git checkout -B pdf-output origin/pdf-output || git checkout -b pdf-output
 
           # Move the PDFs to the pdf-output branch
-          mv *.pdf .
+          mv -f *.pdf .
 
           # Add the PDF files to pdf-output branch
           git add *.pdf
