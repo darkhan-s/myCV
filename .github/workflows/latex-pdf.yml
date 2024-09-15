@@ -41,7 +41,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    if: github.ref != 'refs/heads/pdf-output'  # Ensure deploy is not triggered by the pdf-output branch
+    if: github.ref != 'refs/heads/pdf-output'
 
     steps:
       - name: Checkout repository
@@ -61,25 +61,11 @@ jobs:
           # Set the correct remote URL using the PAT
           git remote set-url origin https://x-access-token:${{ secrets.DEPLOYMENT_KEY }}@github.com/darkhan-s/myCV.git
           
-          # Fetch all branches
-          git fetch origin
-          
           # Check out the pdf-output branch (create if not exists)
           git checkout -B pdf-output origin/pdf-output || git checkout -b pdf-output
 
-          # Fetch the current branch (that triggered the build)
-          git fetch origin ${{ github.ref }}
-          
-          # Check out the PDFs from the current branch to a temporary directory
-          mkdir temp-pdfs
-          git checkout ${{ github.ref }} -- "*.pdf"
-          mv *.pdf temp-pdfs/
-
           # Move the PDFs to the pdf-output branch
-          mv temp-pdfs/*.pdf .
-
-          # Clean up
-          rmdir temp-pdfs
+          mv *.pdf .
 
           # Add the PDF files to pdf-output branch
           git add *.pdf
@@ -90,3 +76,4 @@ jobs:
 
         env:
           GITHUB_TOKEN: ${{ secrets.DEPLOYMENT_KEY }}
+
