@@ -5,6 +5,13 @@
 
 This repository contains my CVs written in LaTeX, which are automatically built and deployed to a separate branch using GitHub Actions.
 
+## To get started
+1. Create a new branch based on main. Branch can be named e.g. in the format of 'CV-MachineLearning', 'CV-AutomationEngineer', 'CV-SalesEngineer' etc.
+2. Rename `main.tex` to `<branch-name>.tex`.
+3. Make changes to the `.tex` file.
+4. Push changes to your created branch. The `<branch-name>.pdf` file should be created under `<pdf-output>` branch.
+
+
 ## Workflow
 
 The GitHub Actions workflow is triggered every time changes are pushed to any branch except `pdf-output`. The workflow performs the following steps:
