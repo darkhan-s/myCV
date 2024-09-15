@@ -66,8 +66,6 @@ jobs:
           # Check out the pdf-output branch (create if not exists)
           git checkout -B pdf-output origin/pdf-output || git checkout -b pdf-output
 
-          # Move the PDFs to the pdf-output branch
-          mv -f *.pdf .
 
           # Add the PDF files to pdf-output branch
           git add *.pdf
