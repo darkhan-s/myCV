@@ -4,7 +4,7 @@
 # CV LaTeX Build & Deployment
 
 This repository contains my CVs written in LaTeX, which are automatically built and deployed to a separate branch using GitHub Actions.
-
+# DO NOT PUSH TO THIS BRANCH. It will not do any harm, but also will produce nothing useful.
 ## Workflow
 
 The GitHub Actions workflow is triggered every time changes are pushed to any branch except `pdf-output`. The workflow performs the following steps:
