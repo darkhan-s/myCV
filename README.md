@@ -33,7 +33,7 @@ The final PDF is located in the root of the `pdf-output` branch. You can access 
 ## Access the Latest PDFs
 
 To view or download the latest version of any compiled CV, go to the `pdf-output` branch or use the following link:
-- [Darkhan Saidnassimov's CV (main branch)](https://darkhan-s.github.io/myCV/SaidnassimovDarkhanCV.pdf)
+- [Darkhan Saidnassimov's CV (main branch)](https://darkhan-s.github.io/myCV/main.pdf)
 - Replace `main` in the URL to access PDFs from other branches, e.g., `https://darkhan-s.github.io/myCV/<branch-name>.pdf`
 
 ## Notes
