@@ -41,7 +41,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    if: github.ref != 'refs/heads/pdf-output'
+    if: github.ref != 'refs/heads/pdf-output'  # Ensure deploy is not triggered by the pdf-output branch
 
     steps:
       - name: Checkout repository
@@ -51,7 +51,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: compiled-cv
-          path: ./  # Downloads the PDF to the repository
+          path: ./artifacts  # Downloads the PDF to a temporary folder
 
       - name: Setup output branch
         run: |
@@ -61,19 +61,21 @@ jobs:
           # Set the correct remote URL using the PAT
           git remote set-url origin https://x-access-token:${{ secrets.DEPLOYMENT_KEY }}@github.com/darkhan-s/myCV.git
 
-          git fetch --all
+          # Fetch all branches
+          git fetch origin
 
-          # Check out the pdf-output branch (create if not exists)
+          # Switch to or create the pdf-output branch
           git checkout -B pdf-output origin/pdf-output || git checkout -b pdf-output
 
+          # Copy the downloaded PDF from the temporary folder
+          mv ./artifacts/*.pdf .
 
-          # Add the PDF files to pdf-output branch
+          # Add only the PDF files to the pdf-output branch
           git add *.pdf
-          git commit -m "Update with latest build from ${{ github.ref }}" || echo "No changes to commit"
-          
-          # Push changes to pdf-output branch
+
+          # Commit and push changes
+          git commit -m "Update PDF with latest build from ${{ github.ref }}" || echo "No changes to commit"
           git push --force origin pdf-output
 
         env:
           GITHUB_TOKEN: ${{ secrets.DEPLOYMENT_KEY }}
-
