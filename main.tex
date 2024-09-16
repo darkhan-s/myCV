@@ -1,6 +1,6 @@
 \documentclass[a4paper,10pt]{article}
 \usepackage{geometry}
-\geometry{left=1in, right=1in, top=0.7in, bottom=1in}
+\geometry{left=1in, right=1in, top=0.4in, bottom=1in}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{hyperref}
@@ -12,6 +12,10 @@
 \usepackage{helvet}
 \usepackage{lmodern}
 \usepackage{array}
+\usepackage{xcolor}
+
+\usepackage[normalem]{ulem}  % For underlining styles
+
 
 \renewcommand{\familydefault}{\sfdefault} % Set the default font family to sans-serif (Helvetica)
 
@@ -49,23 +53,29 @@
 \begin{document}
 \setstretch{1.1}
 
-\begin{center}
-    {\color{darkblue}\textbf{\LARGE Saidnassimov Darkhan}} \\
-    \vspace{0.15cm}
-    {\color{darkblue}\textbf{Software Design Engineer}} \\
-    \vspace{0.3cm}
-    \begin{tabular}{@{}c@{}}
-        \faPhone\ (+358) 046 550 32 34 \textcolor{lightgray}{\textbar} \faEnvelope\ \href{mailto:darkhan.saidnassimov@gmail.com}{darkhan.saidnassimov@gmail.com} \\
-        \faGithub\ \href{https://github.com/darkhan-s}{darkhan-s} \textcolor{lightgray}{\textbar} \faLinkedin\ \href{https://www.linkedin.com/in/dsaidnassimov/}{dsaidnassimov} \textcolor{lightgray}{\textbar} \faMapMarker\ 00370 Helsinki, Finland
-    \end{tabular}
-\end{center}
+% Header with name/title on the left and contact info on the right
+\noindent
+\begin{minipage}[t]{0.65\textwidth} % Left side for name and title
+    {\color{darkblue}\textbf{\LARGE Saidnassimov Darkhan}} \\[0.2cm]
+    \textbf{\large Software Design Engineer} \\[0.2cm]
+    Self-driven software engineer with 4 years of professional experience developing and delivering software-based solutions. Interested in automation and digitization of day-to-day applications using state-of-the-art machine learning methodologies.
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.32\textwidth} % Right side for contact information, aligned at the top
+    \vspace{0pt} % Ensures proper alignment with the top of the name section
+    \faPhone\ (+358) 046 550 32 34 \\[0.2cm]
+    \faEnvelope\ \href{mailto:darkhan.saidnassimov@gmail.com}{\mbox{darkhan.saidnassimov@gmail.com}} \\[0.2cm]
+    \faGithub\ \href{https://github.com/darkhan-s}{\mbox{github.com/darkhan-s}} \\[0.2cm]
+    \faLinkedin\ \href{https://www.linkedin.com/in/dsaidnassimov/}{\mbox{linkedin.com/in/dsaidnassimov}} \\[0.2cm]
+    \faMapMarker\ Helsinki, Finland
+\end{minipage}
 
-\vspace{0.2cm}
-\hrule
-\vspace{0.1cm}
+% \vspace{0.2cm}
+% \hrule
+% \vspace{0.1cm}
 
-\section*{Summary}
-Self-driven software engineer with 4 years of professional experience developing and delivering software-based solutions. Interested in automation and digitization of day-to-day applications using state-of-the-art machine learning methodologies.
+% \section*{Summary}
+% Self-driven software engineer with 4 years of professional experience developing and delivering software-based solutions. Interested in automation and digitization of day-to-day applications using state-of-the-art machine learning methodologies.
 
 \vspace{0.2cm}
 \hrule
@@ -121,13 +131,49 @@ Self-driven software engineer with 4 years of professional experience developing
 \hrule
 \vspace{0.1cm}
 
-\section*{Skills}
+\section*{Skills: \small\textcolor{black}{\uline{Expert}, \dashuline{Intermediate}, Novice}}
 \begin{itemize}
-    \item \textbf{Programming Languages:} C\#.NET, Python,  SQL, Matlab
-    \item \textbf{Technologies:} Git, Linux, Step7, TIA, Rest API, Latex, MS Office
-    \item \textbf{Soft skills:} Agile/Scrum, presentation skills
-    \item \textbf{Languages:} Kazakh (native), Russian (native), English (fluent, IELTS 7.0), Finnish (B1, YKI-certified)
-    \item \textbf{Other certifications:} Valid Finnish occupational safety card, Driving license (B)
+    \item \textbf{Programming:} 
+      \uline{C\# (.NET)}, 
+      \dashuline{Python}, 
+      \uline{Matlab}
+    \item \textbf{Databases:} 
+      \uline{RTDB},
+      \dashuline{MS SQL}, 
+      \dashuline{MySQL}
+    \item \textbf{DevOps \& CI/CD:} 
+      \dashuline{Batch Scripting}, 
+      \dashuline{GitHub Actions}, 
+      Docker, 
+      Kubernetes, 
+      Terraform
+    \item \textbf{Cloud Platforms:} 
+      \dashuline{Azure DevOps}
+    \item \textbf{PLC \& IoT:} 
+      \uline{Step7}, 
+      \uline{TIA}, 
+      \uline{Raspberry Pi}, 
+      \dashuline{Arduino},
+      ROS
+    \item \textbf{Machine Learning (Python):} 
+      \dashuline{PyTorch}, 
+      \uline{OpenCV}, 
+      \dashuline{Pandas}, 
+      \dashuline{NumPy}, 
+      \dashuline{scikit-learn}, 
+      \dashuline{YOLO}, 
+      \dashuline{Matplotlib}
+    \item \textbf{Other Skills:} 
+      \uline{Linux}, 
+      \uline{Git}, 
+      \uline{LaTeX}, 
+      \uline{JSON}, 
+      \uline{XML}, 
+      \dashuline{HTML/CSS},
+      \dashuline{REST API},
+      \uline{Microsoft Office}
+    \item \textbf{Languages:} Kazakh (Native), Russian (Native), English (Fluent, IELTS 7.0), Finnish (B1, YKI-certified)
+    \item \textbf{Other Certifications:} Valid Finnish Occupational Safety Card, Driving License (B)
 \end{itemize}
 
 \end{document}

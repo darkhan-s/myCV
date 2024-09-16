@@ -3,11 +3,11 @@
 
 # Allow only certain type of files
 !*.gitignore
-!*.tex
 !*.yml
 !*.md
 
 # Ignore common LaTeX build files
+!*.tex
 !*.pdf
 *.aux
 *.bbl
