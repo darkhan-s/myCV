@@ -5,10 +5,10 @@
 !*.gitignore
 !*.yml
 !*.md
+!*.tex
 
 # Ignore common LaTeX build files
-!*.tex
-!*.pdf
+*.pdf
 *.aux
 *.bbl
 *.blg
