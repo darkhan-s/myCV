@@ -25,3 +25,6 @@
 *.ist
 *.acn
 *.
+
+# Ignore temporary SaidnassimovDarkhan.pdf file 
+SaidnassimovDarkhan*.pdf
