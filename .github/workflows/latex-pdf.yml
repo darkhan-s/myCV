@@ -34,10 +34,10 @@ jobs:
           latexmk -pdf -xelatex -interaction=nonstopmode $TEX_FILE
 
       - name: Upload compiled PDF as an artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3.1.1
         with:
           name: compiled-cv
-          path: "*.pdf"  # Upload the generated PDF
+          path: "*.pdf"
 
   deploy:
     needs: build
